@@ -1,5 +1,5 @@
 class Notifier < ActionMailer::Base
-  default_url_options[:host] = "test-pizzarouter.heroku.com"
+  default_url_options[:host] = "pizza-router.heroku.com"
 
   # user emails
   def welcome(user)
@@ -34,7 +34,7 @@ class Notifier < ActionMailer::Base
   private
 
     def setup(user)
-      from "do-not-reply@test-pizzarouter.heroku.com"
+      from "do-not-reply@pizza-router.heroku.com"
       sent_on Time.now
       recipients user.email
     end
