@@ -1,0 +1,94 @@
+%html
+  %head
+    %title
+      = h(yield(:title) || "123leads.us")
+
+    = javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"
+    = javascript_include_tag 'rails.splendor'
+    = javascript_include_tag 'jquery-ui'
+    = javascript_include_tag 'jquery.stepy'
+    = javascript_include_tag 'jquery.validator'
+    = javascript_include_tag 'jquery.qtip'
+    = javascript_include_tag 'jquery.dimensions'
+    = javascript_include_tag 'jquery.gradient'
+    = javascript_include_tag 'jquery.corner'
+    = javascript_include_tag 'jquery.cycle'
+    = javascript_include_tag 'jquery.updater'
+    = javascript_include_tag 'jquery.maskedinput'
+    = javascript_include_tag 'jquery.jeditable'
+    = javascript_include_tag 'jquery.jeditable.maskedinput'
+    = javascript_include_tag 'jquery.inspect'
+    = javascript_include_tag 'jquery.960grid'
+
+    = javascript_include_tag 'application'
+
+    = active_scaffold_includes
+    
+    = formtastic_stylesheet_link_tag
+    = stylesheet_link_tag "jquery-ui", 'jquery.stepy'
+    
+    = stylesheet_link_tag "application" 
+    
+    = yield :head
+    
+    %meta{:name => 'csrf-token', :content => form_authenticity_token}
+    %meta{:name => 'csrf-param', :content => 'authenticity_token'}
+
+
+  %body.application
+
+    - # devise for some reason doesn't work with flash[:notice] inside this setup
+    .flashes
+      - flash.each do |key, value|
+        .flash{:class => key}= value
+        
+    #header
+      <center><img src="/images/123leads.png" style='cursor: pointer;padding-bottom:18px;padding-top:6px' onclick='window.location = "/";' /></center>
+    .wrapper
+      .content
+        = yield
+        <div style="clear:both;"></div> 
+      <div style="clear:both;"></div>
+
+    :plain
+      <div id="footer">
+        <div class="inner">
+          <div class="footer_column">
+            <h5>Features</h5>
+            <ul class="footer_links">
+              <li><a href="/features/territory-management/">Territory Management</a></li>
+              <li><a href="/features/easy-to-use-interface/">Easy-to-use Interface</a></li>
+            </ul>
+          </div>
+          <div class="footer_column">
+            <h5>Resources</h5>
+            <ul class="footer_links">
+              <li><a href="/faqs/general-questions">General Questions</a></li>
+            </ul>
+          </div>
+          <div class="footer_column">
+            <h5>Community</h5>
+            <ul class="footer_links">
+              <li><a href="/discussions/suggestions">Suggestions</a></li>
+            </ul>
+          </div>
+          <div class="footer_column_last">
+            <h5>123Leads</h5>
+            <ul class="footer_links">
+              <li><a href="/about-us/">About Us</a></li>
+              <li><a href="/how-it-works/">How It Works</a></li>
+              <li><a href="/careers/">Careers</a></li>
+              <li><a href="/contact-us/">Contact Us</a></li>
+              <li><a href="/login">Sign In</a></li>
+            </ul>
+          </div>
+          <div class="footer_base">
+            <div class="powered-by-direct-leap">
+              <a target="_blank" href=""><span>Powered by Rob</span></a>
+            </div>
+            <p>&copy; Copyright 2011 Pizzarouter. All rights reserved. <a href="/terms-conditions/">Terms &amp; Conditions</a>. <a href="/privacy-policy/">Privacy Policy</a>. <span><a href="/sitemap/">Sitemap.</a></span></p>
+          </div>
+          <div style='clear:both;'></div>
+        </div>
+      </div>
+      

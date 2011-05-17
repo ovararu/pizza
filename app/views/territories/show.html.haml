@@ -1,0 +1,19 @@
+%strong= @territory.title
+<br />
+
+<strong>FSA/SKU:</strong>
+= @territory.sku
+<br />
+
+%strong== House-holds:
+%em= @territory.tally
+<br />
+
+<div align='right' style='padding-top:8px;'>
+[
+- if user_signed_in? && (!current_user.routes.nil? && current_user.routes.any? {|route| @route = route if route.territory == @territory})
+  %a{:href => "javascript:App.removeRoute(#{@route[:id]});"}== Remove Route
+- else 
+  %a{:href => "javascript:App.addRoute(#{@territory[:id]});"}== Add Route
+]
+</div>

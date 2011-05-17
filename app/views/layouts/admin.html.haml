@@ -1,0 +1,51 @@
+%html
+  %head
+    %title= "Admin"
+    
+    = stylesheet_link_tag 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.4/themes/ui-lightness/jquery-ui.css'
+    
+    = javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"
+    = javascript_include_tag 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.4/jquery-ui.js'
+    = javascript_include_tag 'jquery-ui-timepicker-addon.js'
+    
+    = include_tiny_mce_if_needed
+    
+    - # = javascript_include_tag 'tiny_mce/tiny_mce.js'
+    
+    = javascript_include_tag 'rails'
+    
+    = javascript_include_tag 'jquery.inspect'
+    - # = javascript_include_tag 'rails_jquery.js'
+    - # = javascript_include_tag 'application.js'
+    
+    = active_scaffold_includes
+    = record_select_includes
+    
+    :javascript
+      $(document).ajaxSend(function(e, xhr, options) {
+        var token = $("meta[name='csrf-token']").attr("content");
+        xhr.setRequestHeader("X-CSRF-Token", token);
+      });
+
+      
+    
+    
+    - # = javascript_include_tag 'application'
+    = stylesheet_link_tag "application" 
+    
+    %meta{:name => 'csrf-token', :content => form_authenticity_token}
+    %meta{:name => 'csrf-param', :content => 'authenticity_token'}
+
+  %body.admin
+    :plain
+      <div class="admin-header" style='height:25px;'>
+        <div class="actions">
+          <a id="admin-logout-link" href="/logout" class="logout logout">Logout</a>
+          <a id="admin-calls-link" class="index" href="/admin/calls">Calls</a>
+          <a id="admin-routes-link" class="index" href="/admin/routes">Routes</a>
+          <a id="admin-territories-link" class="index" href="/admin/territories">Territories</a>
+          <a id="admin-users-link" class="index" href="/admin/users">Users</a>
+          </div>
+      </div>
+  
+    = yield

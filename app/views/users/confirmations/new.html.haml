@@ -1,0 +1,14 @@
+- content_for :title, t('.title')
+
+- semantic_form_for resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post } do |form|
+
+  - #= devise_error_messages!
+  = form.error_messages :header_message => "#{pluralize(form.object.errors.count, 'error')} prevented you from confirming your account"
+
+  = form.inputs do
+
+    = form.input :email
+
+  = form.buttons do
+    = form.commit_button t('.create')
+    = form.cancel_button root_url

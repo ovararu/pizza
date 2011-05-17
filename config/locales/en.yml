@@ -1,0 +1,305 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+en:
+  
+  date:
+    formats:
+      default: "%d.%m.%Y"
+  time:
+    formats:
+      default: "%d.%m.%Y %I:%M %p"
+      
+  spinner: "<center><br><br><br><br><br><img src='/images/spinner.gif' /><br>One moment please, redirecting...</center>"
+  
+  label:
+    signin: Sign-In
+    update: Update
+    email: Email
+    signup: Sign-Up
+    activate: Activate
+    reset: Reset Password
+    save: Save
+    cancel: Cancel1
+    provinces: Provinces
+    states: States
+
+    
+  link:
+    forgot: Forgot password
+    user: My Account
+    signup: Sign Upasdasd
+    new_user: New User
+    signin: Sign In
+    signout: Sign out
+    upgrade: Upgrade
+    show: Show
+    edit: Edit
+    destroy: Destroy
+  
+  confirm:
+    signout: "Are you sure you want to signout?"
+    destroy: "Are you sure?"
+
+  errors:
+    messages:
+      not_found: "not found"
+      already_confirmed: "was already confirmed, please try signing in"
+      not_locked: "was not locked"
+      not_saved:
+        one: "1 error prohibited this %{resource} from being saved:"
+        other: "%{count} errors prohibited this %{resource} from being saved:"
+
+  flash:
+    require_admin: "Sorry, you don't have access to that."
+    require_user: "You must be logged in to access this page."
+    require_no_user: "You must be logged out to access this page."
+    require_user_token: "We're sorry, but we could not locate your account. If you are having issues try copying and pasting the URL from your email into your browser or restarting the reset password process."
+
+  formtastic:
+    cancel: "Cancel"
+    titles:
+    labels:
+    hints:
+      user:
+        email: "e.g. myname@example.com. Used to sign-in to your account."
+        password_confirmation: "Minimum of 6 characters in length."
+    actions:
+      create: "Create my %{model}"
+      update: "Save changes"
+
+  devise:
+    failure:
+      unauthenticated: 'You need to sign in or sign up before continuing.'
+      unconfirmed: 'You have to confirm your account before continuing.'
+      locked: 'Your account is locked.'
+      invalid: 'Invalid email or password.'
+      invalid_token: 'Invalid authentication token.'
+      timeout: 'Your session expired, please sign in again to continue.'
+      inactive: 'Your account was not activated yet.'
+    sessions:
+      signed_in: 'Signed in successfully.'
+      signed_out: 'Signed out successfully.'
+    passwords:
+      send_instructions: 'You will receive an email with instructions about how to reset your password in a few minutes.'
+      updated: 'Your password was changed successfully. You are now signed in.'
+    confirmations:
+      send_instructions: 'You will receive an email with instructions about how to confirm your account in a few minutes.'
+      confirmed: 'Your account was successfully confirmed. You are now signed in.'
+    registrations:
+      signed_up: 'Welcome! You have signed up successfully. A confirmation was sent to your e-mail.'
+      inactive_signed_up: 'You have signed up successfully. However, we could not sign you in because your account is %{reason}.'
+      updated: 'You updated your account successfully.'
+      destroyed: 'Bye! Your account was successfully cancelled. We hope to see you again soon.'
+    unlocks:
+      send_instructions: 'You will receive an email with instructions about how to unlock your account in a few minutes.'
+      unlocked: 'Your account was successfully unlocked. You are now signed in.'
+    omniauth_callbacks:
+      success: 'Successfully authorized from %{kind} account.'
+      failure: 'Could not authorize you from %{kind} because "%{reason}".'
+    mailer:
+      confirmation_instructions:
+        subject: 'Confirmation instructions'
+      reset_password_instructions:
+        subject: 'Reset password instructions'
+      unlock_instructions:
+        subject: 'Unlock Instructions'
+        
+  # Views
+  users:
+    registrations:
+      new:
+        title: "Join now"
+        instructions: "Sign up today and you'll value prop your vertical segment."
+        create: "Sign up"
+        cancel: "Cancel, go to login"
+        form:
+          title: "Join now"
+          instructions: "Sign up today and you'll value prop your vertical segment."
+          create: "Sign up"
+          cancel: "Cancel, go to login"
+      edit:
+        title: "Edit your account"
+        instructions: "You can only change your password"
+        update: "Update my account"
+        email: "Email"
+        destory: "Cancel my account"
+
+    confirmations:
+      new:
+        create: "Resend confirmation email"
+        title: "Resend confirmation email"
+
+    passwords:
+      new:
+        create: "Send password reset"
+        title: "Reset password"
+
+    sessions:
+      new:
+        title: "Login"
+        instructions: "Enter your login details to access your dashboard and contact lists"
+        cancel: Home
+      form:
+        create: "Sign in"
+
+    #activation:
+    #  new:
+    #    submit: "Send me a new Activation Email"
+    #    title: "Send a new Activation Email"
+    #    instructions: "Check your email for an activation code. <br /><br /> <img src='/images/activation_instructions.png' />'" # "Set your password and click Activate to log in to the site."
+    #  edit:
+    #    activation_code: "Activation Code"
+    #    submit: "Activate by Activation Code"
+    #    title: "Enter your Activation Code"
+    #    instructions: "Check your email for an activation code. <br /><br /> <img src='/images/activation_instructions.png' />'" # "Set your password and click Activate to log in to the site."
+    #
+    #password:
+    #  edit:
+    #    title: Change My Password
+    #    submit: Update my password and log me in
+    #  new:
+    #    instructions: "Fill out the form below and instructions to reset your password will be emailed to you."
+    #    title: Forgot Password?
+    #    submit: Reset my password
+
+  territories:
+    index:
+      no_routes: "<center><img src='/images/question-mark.png' /><br/><br/>You haven't added any territories to your cart.<br />  <em>Add a territory. Try setting a transfer number if needed.</em></center>"
+      no_orders: "<center><br/><br/><br/><br/><br/><br/><br/><br/><br/><img src='/images/alert.jpg' /><br/><br/><br/>You haven't placed any orders with us yet.<br /><br />  <em>Finish the checkout process and you'll be able to download your contact lists here.</em></center><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>"
+
+  # Email subjects
+  subject:
+    welcome: Welcome to Pizza Order
+    receipt: Order Receipt
+    processed: Order has completed processing
+
+  notifier:
+    #activation_instructions:
+    #  text: |
+    #    Thank you for creating an account! Click the url below to activate your account!
+    #
+    #    {{activation_url}}
+    #
+    #    If the above URL does not work try copying and pasting it into your browser. If you continue to have problem, please feel free to contact us.
+    #
+    #
+    #password_instructions:
+    #  text: |
+    #    A request to reset your password has been made. If you did not make this request, simply ignore this email. If you did make this request just click the link below:
+    #
+    #    {{password_url}}
+    #
+    #    If the above URL does not work try copying and pasting it into your browser. If you continue to have problem please feel free to contact us.
+    #
+    welcome:
+      text: |
+        Welcome to 123Leads.us
+
+        Thank you for creating an account at Pizza-Router
+        
+        You can log in to the site at {{new_user_session_url}}
+
+        If you forget your password, you can visit {{new_user_password_url}} to reset it.
+
+
+    receipt:
+      text: |
+        Purchase Receipt
+
+        Thank you for subscribing to routing territories at http://pizza-router.heroku.com
+        
+        To cancel your campaign at anytime, login at  http://pizza-router.heroku.com
+        
+        Thank you,
+        
+         - Pizza Router
+        
+        
+        
+        
+
+    processed:
+      text: |
+        Order Processed
+
+        Thank you for ordering at 123leads.us
+
+        You can log in to the site at {{login_url}} to view your order
+
+        If you forget your password, you can visit {{new_account_password}} to reset it.
+
+  ie:
+    upgrade_message: |
+      Your browser is obsolete. For best results in gminer, please {{upgrade_page_url}}
+    outdated_browser: You are using an outdated browser
+    please_upgrade: "For a better experience using this site, please upgrade to a modern web browser."
+    browser_obsolete: Your Browser is Obsolete
+
+
+  states:
+    AL: Alabama
+    AK: Alaska
+    AZ: Arizona
+    AR: Arkansas
+    CA: California
+    CO: Colorado
+    CT: Connecticut
+    DE: Delaware
+    DC: District Of Columbia
+    FL: Florida
+    GA: Georgia
+    HI: Hawaii
+    ID: Idaho
+    IL: Illinois
+    IN: Indiana
+    IA: Iowa
+    KS: Kansas
+    KY: Kentucky
+    LA: Louisiana
+    ME: Maine
+    MD: Maryland
+    MA: Massachusetts
+    MI: Michigan
+    MN: Minnesota
+    MS: Mississippi
+    MO: Missouri
+    MT: Montana
+    NE: Nebraska
+    NV: Nevada
+    NH: New Hampshire
+    NJ: New Jersey
+    NM: New Mexico
+    NY: New York
+    NC: North Carolina
+    ND: North Dakota
+    OH: Ohio
+    OK: Oklahoma
+    OR: Oregon
+    PA: Pennsylvania
+    RI: Rhode Island
+    SC: South Carolina
+    SD: South Dakota
+    TN: Tennessee
+    TX: Texas
+    UT: Utah
+    VT: Vermont
+    VA: Virginia
+    WA: Washington
+    WV: West Virginia
+    WI: Wisconsin
+    WY: Wyoming
+
+  provinces:
+    'ON': Ontario # ON = true, WHAT THE FUCK i18n?
+    QC: Quebec
+    BC: British Columbia
+    AB: Alberta
+    MB: Manitoba
+    SK: Saskatchewan
+    NS: Nova Scotia
+    NB: New Brunswick
+    NL: Newfoundland and Labrador
+    PE: Prince Edward Island
+    NT: Northwest Territories
+    YT: Yukon
+    NU: Nunavut

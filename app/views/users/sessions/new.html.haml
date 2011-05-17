@@ -1,0 +1,14 @@
+- content_for :title, t('.title')
+
+= render :partial => 'users/sessions/form', :locals => {:resource => resource, :resource_name => resource_name}
+
+:javascript
+  var enforce_no_ajaxiness = document.location.href
+
+  if(!enforce_no_ajaxiness.match(/login/)){
+    //try quickly hiding info window....
+    try{
+      default_shared_info_window.close();
+    } catch(ex){}
+    document.location = "/login"
+  }

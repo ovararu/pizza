@@ -1,0 +1,45 @@
+%html
+  %head
+    %title= h(yield(:title) || "123leads.us")
+
+    = yield :before_js
+    = javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js"
+    = javascript_include_tag 'rails', 'jquery-ui', 'jquery.qtip', 'jquery.dimensions', 'jquery.gradient', 'jquery.corner', 'jquery.inspect'
+    = yield :after_js
+
+    = yield :before_css
+    = formtastic_stylesheet_link_tag
+    = stylesheet_link_tag "jquery-ui" 
+    = stylesheet_link_tag "application" 
+    = yield :after_css
+
+    = yield :head
+
+    %meta{:name => 'csrf-token', :content => form_authenticity_token}
+    %meta{:name => 'csrf-param', :content => 'authenticity_token'}
+
+  %body.account
+
+    = yield :at_body_start
+    = yield :before_account_container
+  
+    .account
+
+      =raw page_title(yield(:title))
+
+      - # failure, success, warning or error not handled here as something magically breaks flash[:notice]
+      .flashes
+        - if alert
+          .flash.alert= alert
+        - if notice
+          .flash.notice= notice
+
+      = yield
+    
+    = yield :after_account_container
+
+    .help
+      = render :partial => "users/shared/links"
+
+    = yield :after_help_container
+    = yield :at_body_end

@@ -1,0 +1,18 @@
+- # always enforce remember me 
+- resource.remember_me = true
+
+- semantic_form_for resource, :as => resource_name, :url => session_path(resource_name) do |form|
+
+  = form.error_messages :header_message => "#{pluralize(form.object.errors.count, 'error')} prevented you from sign-in"
+
+  = form.inputs do
+
+    = form.input :email
+    = form.input :password
+    
+    - # for now ignore devise_mappings # - if devise_mapping.rememberable?
+    = form.input :remember_me, :as => :boolean
+
+  = form.buttons do
+    = form.commit_button t('.create')
+    = form.cancel_button root_url

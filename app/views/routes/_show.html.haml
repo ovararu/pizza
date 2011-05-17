@@ -1,0 +1,25 @@
+%li{:class => "route_#{route.territory.sku}"}
+  .route
+    .title
+      %strong= route.territory.title
+    .label
+      %strong== Territory (FSA):
+      %a{:href => "javascript:map.setCenter(new google.maps.LatLng(#{route.territory.latitude}, #{route.territory.longitude}));map.setZoom(12);"}= route.territory.sku
+    .remove
+      [
+      %a{:href => "javascript:App.removeRoute(#{route[:id]});"}== X
+      ]
+  <br/>
+
+  %strong== House-holds:
+  %em= route.territory.tally
+  <br/>
+  
+  %strong== Route To:
+  
+  %div{:class=> "route_#{route.territory.sku}_dst"}= route.dst
+
+  %script{:type => 'text/javascript'}
+    =raw "$('.route_#{route.territory.sku}_dst').editable('/routes/#{route.id}', App.in_place_route_dst_options());"
+
+    

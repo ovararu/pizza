@@ -1,0 +1,66 @@
+
+#content
+
+  #tabs
+    %ul
+      %li
+        %a{:href => '#edit-your-regions', :style => 'padding: 0.5em 11px;'}
+          %span= "1. Edit your Territories"
+      
+      - if user_signed_in? && !current_user.subscription_id.blank?
+        %li#unsubscribe-link{:style=>"margin-left: 18px;",}
+          - token = Digest::SHA1.hexdigest("update_payment--#{current_user.subscription_id}--zGcKupZZV7XviGEr7PhV")[0..9]
+          %a{:href => "https://d-l-adams-and-associates-inc.chargify.com/update_payment/#{current_user.subscription_id}/#{token}", :target => '_blank', :style => 'padding: 0.5em 6px;'}
+            %span= "2. Update Subscription"
+      - else
+        %li#subscribe-link{:style=>"margin-left: 18px;",}
+          %a{:href => "https://d-l-adams-and-associates-inc.chargify.com/h/32506/subscriptions/new?first_name=#{current_user[:first_name]}&last_name=#{current_user[:last_name]}&email=#{current_user[:email]}&reference=#{current_user[:id]}", :target => '_blank', :style => 'padding: 0.5em 6px;'}
+            %span= "2. Ready? Subscribe now"
+      
+
+      - unless current_user
+      
+        %li{:style => "float: right; margin: 0pt 0pt 0pt 19px;"}
+          %a{:href => '#login',  :onclick => 'window.location = "/login";', :style => 'padding: 0.5em 12px;'}= "Login" 
+        %li{:style => "float: right;"}
+          %a{:href => '#signup', :onclick => 'window.location = "/signup";', :style => 'padding: 0.5em 8px; margin-left: 0px;'}= "Signup" 
+          
+      - else 
+
+        %li{:style => "float: right; margin: 0pt 0pt 0pt 19px;"}
+          %a{:href => '#logout', :onclick => 'window.location = "/logout";', :style => 'padding: 0.5em 7px; margin-left: 0px;'}= "Logout" 
+
+        %li{:style => "float: right; margin: 0pt 0pt 0pt 19px;"}
+          %a{:href => '#account', :onclick => 'window.location = "/account/edit";', :style => 'padding: 0.5em 7px; margin-left: 0px;'}= "Account" 
+
+
+    #edit-your-regions
+
+      = raw Cartographer::Header.new.to_s
+      = raw @map.to_html
+
+      <div style="width:938px;height:400px;" id="map">&nbsp;</div> 
+
+      <h2 style='color: #4080BF;font-size: 16px;'>Your territories:</h2>
+      #routes-container
+        %ul#routes
+          .no-routes{:style => (current_user.routes.empty?) ? "" : "display:none;"  }= raw t(".no_routes")
+          - unless current_user.routes.empty?
+            - current_user.routes.each do |route|
+              = render :partial => 'routes/show', :locals => {:route => route}
+          - else
+            :javascript
+              $(function(){
+                $('#subscribe-link').hide();
+              })
+              
+        <div style='clear:both'></div>
+
+    - unless current_user
+      #login=raw t('spinner')
+      #signup=raw t('spinner')
+
+    - else
+      #account=raw t('spinner')
+      #logout=raw t('spinner')
+
