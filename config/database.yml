@@ -18,7 +18,7 @@
 development:
   adapter: postgresql
   host: sun4.directleapinternal.com
-  database: pizzadb_production
+  database: pizzadb_development
   username: eoldrnofou
   password: tzNCIx2m2k2g5xJeb9Ht
   encoding: utf8
