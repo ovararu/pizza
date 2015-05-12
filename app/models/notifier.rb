@@ -2,11 +2,11 @@ class Notifier < ActionMailer::Base
   default_url_options[:host] = "pizza-router.heroku.com"
 
   # user emails
-  def welcome(user)
-    setup(user)
-    subject I18n.t("subject.welcome")
-    body :user => user, :welcome_url => user_root_url
-  end
+  # def welcome(user)
+  #  setup(user)
+  #  subject I18n.t("subject.welcome")
+  #  body :user => user, :welcome_url => user_root_url
+  # end
 
   def activation_instructions(user)
     setup(user)

@@ -1430,3 +1430,14 @@ body.account div.account-destroy {
 #map .account {
   display: none;
 }
+
+#businessInformation {
+  padding-top: 20px;
+}
+#businessInformation legend {
+  display: block !important;
+  color: black;
+  font-weight: 800;
+  padding-left: 0;
+  margin-left: 0;
+}

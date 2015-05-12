@@ -59,10 +59,17 @@ en:
     cancel: "Cancel"
     titles:
     labels:
+      province: Tax Province
+      business_name: Company Name
+      business_address: Address
+      business_city: City
+      business_province: Province
+      business_postal_code: Postal Code
     hints:
       user:
         email: "e.g. myname@example.com. Used to sign-in to your account."
         password_confirmation: "Minimum of 6 characters in length."
+        province: Used to calculate the sales tax, please enter the company headquarters
     actions:
       create: "Create my %{model}"
       update: "Save changes"
@@ -86,7 +93,7 @@ en:
       send_instructions: 'You will receive an email with instructions about how to confirm your account in a few minutes.'
       confirmed: 'Your account was successfully confirmed. You are now signed in.'
     registrations:
-      signed_up: 'Welcome! You have signed up successfully. A confirmation was sent to your e-mail.'
+      signed_up: "Success! Add a territory by clicking the house icon then 'Add route'. When you're ready to order click 'Ready? Subscribe Now' for billing."
       inactive_signed_up: 'You have signed up successfully. However, we could not sign you in because your account is %{reason}.'
       updated: 'You updated your account successfully.'
       destroyed: 'Bye! Your account was successfully cancelled. We hope to see you again soon.'
@@ -123,6 +130,11 @@ en:
         update: "Update my account"
         email: "Email"
         destory: "Cancel my account"
+
+    unlocks:
+      new:
+        create: "Send Unlock Email"
+        title: "Send Unlock Email"
 
     confirmations:
       new:

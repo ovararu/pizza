@@ -22,8 +22,7 @@ ChargifyDemoRails3::Application.configure do
 
   # Only use best-standards-support built into browsers
   config.action_dispatch.best_standards_support = :builtin
-  
-  
-  config.action_mailer.default_url_options = { :host => 'localhost:3003' }
+
+  config.action_mailer.default_url_options = { :host => 'pizza-router.heroku.com' }
 end
 

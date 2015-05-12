@@ -2,7 +2,7 @@ ChargifyDemoRails3::Application.routes.draw do
   # The priority is based upon order of creation:
   # first created -> highest priority.
   
-  root :to => "application#index"
+  root :to => redirect('/register')
   
   match 'thanks' => 'subscriptions#thanks' #  recieve chargify hook
 
@@ -41,11 +41,26 @@ ChargifyDemoRails3::Application.routes.draw do
       record_select_routes
       post :mark_all, :on => :collection
     end
+    resources :territories_routes, :controller => "territories_routes" do
+      as_routes
+      record_select_routes
+      post :mark_all, :on => :collection
+    end
     resources :routes  do
       as_routes
       post :mark_all, :on => :collection
     end
     resources :users  do
+      as_routes
+      record_select_routes
+      post :mark_all, :on => :collection
+    end
+    resources :users_routes, :controller => "users_routes" do
+      as_routes
+      record_select_routes
+      post :mark_all, :on => :collection
+    end
+    resources :users_territories, :controller => "users_territories" do
       as_routes
       record_select_routes
       post :mark_all, :on => :collection

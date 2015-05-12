@@ -10,7 +10,8 @@ gem 'sqlite3'
 gem "pg"
 
 # core
-gem 'chargify_api_ares'
+gem 'chargify_api_ares' # f**k you so much
+gem 'mechanize'
 
 # model
 gem 'inherited_resources'

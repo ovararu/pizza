@@ -1,4 +1,4 @@
-class Admin::RoutesController < ApplicationController
+class Admin::TerritoriesRoutesController < ApplicationController
   before_filter :authenticate_admin!
   
   layout 'admin'
@@ -40,6 +40,8 @@ class Admin::RoutesController < ApplicationController
       :created_at,
       :updated_at,
     ]
+
+    config.columns[:user].clear_link
 
   end
 

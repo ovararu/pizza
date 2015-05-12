@@ -32,11 +32,11 @@ module ApplicationHelper
   end
 
   def state_options
-    I18n.t('states').collect{|abbrev, full_name| [full_name.to_s, abbrev.to_s]}.sort{|a,b| a.first <=> b.first}
+    I18n.t('states').collect{|abbrev, full_name| [full_name.to_s, abbrev.to_s.downcase]}.sort{|a,b| a.first <=> b.first}
   end
   
   def province_options
-    I18n.t('provinces').collect{|abbrev, full_name| [full_name.to_s, abbrev.to_s]}.sort{|a,b| a.first <=> b.first}
+    I18n.t('provinces').collect{|abbrev, full_name| [full_name.to_s, abbrev.to_s.downcase]}.sort{|a,b| a.first <=> b.first}
   end
 
   def state_options_with_blank(label = "")
@@ -74,24 +74,24 @@ module ApplicationHelper
     end
   end
 
-  def user_column(record)
-    if record && record.user
-      link_to record.user.to_s, edit_admin_user_path(
-        :id => record.user[:id], 
-        :assoc_id => record[:id], 
-        :association => 'user', 
-        :eid => "admin__calls_#{record[:id]}_user", 
-        :parent_scaffold => 'admin/calls',
-        :adapter => '_list_inline_adapter'
-      ), 
-      :remote => true, 
-      'data-position'.to_sym => 'after',
-      :class => 'edit as_action user',
-      :id => "as_admin__calls-edit-user-#{record.user[:id]}-link"
-    else
-      "-"
-    end
-  end
+  #def user_column(record)
+  #  if record && record.user
+  #    link_to record.user.to_s, edit_admin_user_path(
+  #      :id => record.user[:id], 
+  #      :assoc_id => record[:id], 
+  #      :association => 'user', 
+  #      :eid => "admin__calls_#{record[:id]}_user", 
+  #      :parent_scaffold => 'admin/calls',
+  #      :adapter => '_list_inline_adapter'
+  #    ), 
+  #    :remote => true, 
+  #    'data-position'.to_sym => 'after',
+  #    :class => 'edit as_action user',
+  #    :id => "as_admin__calls-edit-user-#{record.user[:id]}-link"
+  #  else
+  #    "-"
+  #  end
+  #end
 
   # def subscription_next_assessment_at_column(record)
   #   if record.subscription && !record.subscription.blank?

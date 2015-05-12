@@ -18,7 +18,14 @@
 
     = form.input :password, :hint => "leave blank if you don't want to change it"
     = form.input :password_confirmation
-    
+
+    = form.inputs "Business Information", :id => "businessInformation" do
+      = form.input :business_name
+      = form.input :business_address
+      = form.input :business_city
+      = form.input :business_province, :as => :select, :collection => province_options, :prompt => "-- Select a Province --"
+      = form.input :business_postal_code
+
     %li
       <hr />
     

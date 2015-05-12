@@ -9,14 +9,14 @@
 require 'csv'
 
 # 
-rob = User.create(:first_name => "Robert", :last_name => "Lowe", :dst => "123-123-1234", :email => "rob@iblargz.com", :password => "nopass", :password_confirmation => "nopass")
+rob = User.create(:first_name => "Robert", :last_name => "Lowe", :dst => "123-123-1234", :province => "Ontario", :email => "rob@iblargz.com", :password => "nopass", :password_confirmation => "nopass")
 rob.add_role "admin"
 rob.confirmed_at= Time.now
 rob.confirmation_token= nil
 rob.save!
 
 #
-simon = User.create(:first_name => "Simon", :last_name => "Rowland", :dst => "123-123-1234", :email => "simon.rowland@directleap.com", :password => "nopass", :password_confirmation => "nopass")
+simon = User.create(:first_name => "Simon", :last_name => "Rowland", :dst => "123-123-1234", :province => "Ontario", :email => "simon.rowland@directleap.com", :password => "nopass", :password_confirmation => "nopass")
 simon.add_role "admin"
 simon.confirmed_at= Time.now
 simon.confirmation_token= nil
@@ -24,8 +24,8 @@ simon.save!
 
 
 # 810k postal codes
-puts "Executing `psql haystack_development -f #{RAILS_ROOT}/db/seeds/postal_codes.psql`, please wait about 10 seconds."
-`psql haystack_development -f #{RAILS_ROOT}/db/seeds/postal_codes.psql`
+puts "Executing `psql pizzadb_development -f #{RAILS_ROOT}/db/seeds/postal_codes.psql`, please wait about 10 seconds."
+`psql -h localhost pizzadb_development -f #{RAILS_ROOT}/db/seeds/postal_codes.psql`
 
 
 

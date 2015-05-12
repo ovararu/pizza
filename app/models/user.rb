@@ -1,4 +1,14 @@
+class ProvinceValidator < ActiveModel::EachValidator
+  Provinces = I18n.t('provinces').collect{|abbrev, full_name| abbrev.to_s.downcase}.sort{|a,b| a.first <=> b.first}
+  def validate_each(record, attribute, value)
+    unless Provinces.include?(value)
+      record.errors[attribute] << "must be one of #{I18n.t('provinces').collect{|abbrev, full_name| full_name.to_s}.sort{|a,b| a.first <=> b.first}.join(", ")}"
+    end
+  end
+end
+
 class User < ActiveRecord::Base
+
   devise :database_authenticatable,
          :registerable,
          :recoverable,
@@ -6,7 +16,7 @@ class User < ActiveRecord::Base
          :trackable,
          :validatable,
          :token_authenticatable,
-         :confirmable,
+         # :confirmable,
          :lockable,
          :timeoutable
 
@@ -27,13 +37,19 @@ class User < ActiveRecord::Base
                   :first_name, 
                   :last_name,
                   :dst,
+                  :province,
                   :expiration_month, 
                   :expiration_year, 
                   :credit_card_number, 
                   :cvv, 
                   :customer_id,
                   :subscription_id, 
-                  :remember_me
+                  :remember_me,
+                  :business_name,
+                  :business_address,
+                  :business_city,
+                  :business_province,
+                  :business_postal_code
 
   # RELATIONSHIPS /_________
 
@@ -56,6 +72,15 @@ class User < ActiveRecord::Base
                        :with => %r{^\d{3}-\d{3}-\d{4}$},
                        :message => "must be a valid phone number (123-123-1235, ###-###-####)",
                        :unless => Proc.new { |user| user.admin? }
+
+   validates           :province,
+                       :province => true,
+                       :unless => Proc.new { |user| user.admin? }
+
+   validates           :business_province,
+                       :province => true,
+                       :unless => Proc.new { |user| user.admin? },
+                       :if     => Proc.new { |user| user.business_province && !user.business_province.empty? }
 
 
   before_validation :ensure_roles_is_array
@@ -202,13 +227,13 @@ class User < ActiveRecord::Base
 
   # MAIL /_________
 
-  after_create :deliver_welcome!
+  # after_create :deliver_welcome!
 
   # invoked via /account/activation/:activation_code -> success -> redirect?
-  def deliver_welcome!
-    # reset_perishable_token!
-    Notifier.deliver_welcome(self)
-  end
+  # def deliver_welcome!
+  #  # reset_perishable_token!
+  #   Notifier.deliver_welcome(self)
+  # end
 
   # ROLES /_________
 

@@ -32,6 +32,8 @@ class CreateUsers < ActiveRecord::Migration
       # default route
       t.string     :dst
 
+      t.string     :province,             :null => false
+
       t.timestamps
     end
     

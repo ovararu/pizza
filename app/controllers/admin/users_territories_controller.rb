@@ -1,4 +1,4 @@
-class Admin::TerritoriesController < ApplicationController
+class Admin::UsersTerritoriesController < ApplicationController
   before_filter :authenticate_admin!
   
   layout 'admin'
@@ -58,23 +58,19 @@ class Admin::TerritoriesController < ApplicationController
       :title,
       :body,
       :tally,
-      # :latitude, # Can edit hard floats...
-      # :longitude,
+      :latitude, # Can edit hard floats...
+      :longitude,
       :routes,
       :users,
       :created_at,
       :updated_at,
     ]
+    
+    
+    config.columns[:routes].clear_link
+    #  config.actions.exclude :nested
 
     config.columns[:body].form_ui = :text_editor
   end
-
-  def self.active_scaffold_controller_for(klass)
-    return Admin::TerritoriesController if klass == Territory
-    return Admin::TerritoriesRoutesController if klass == Route
-    #return Admin::TerritoriesUsersController if klass == User
-    return "#{klass}ScaffoldController".constantize rescue super
-  end
-
 end
 

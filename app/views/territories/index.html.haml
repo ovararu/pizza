@@ -6,17 +6,16 @@
       %li
         %a{:href => '#edit-your-regions', :style => 'padding: 0.5em 11px;'}
           %span= "1. Edit your Territories"
-      
+
       - if user_signed_in? && !current_user.subscription_id.blank?
         %li#unsubscribe-link{:style=>"margin-left: 18px;",}
-          - token = Digest::SHA1.hexdigest("update_payment--#{current_user.subscription_id}--zGcKupZZV7XviGEr7PhV")[0..9]
-          %a{:href => "https://d-l-adams-and-associates-inc.chargify.com/update_payment/#{current_user.subscription_id}/#{token}", :target => '_blank', :style => 'padding: 0.5em 6px;'}
+          - token = Digest::SHA1.hexdigest("update_payment--#{current_user.subscription_id}--#{$SHARED_SITE_ID}")[0..9]
+          %a{:href => "https://#{Chargify.subdomain}.chargify.com/update_payment/#{current_user.subscription_id}/#{token}", :target => '_blank', :style => 'padding: 0.5em 6px;'}
             %span= "2. Update Subscription"
       - else
         %li#subscribe-link{:style=>"margin-left: 18px;",}
-          %a{:href => "https://d-l-adams-and-associates-inc.chargify.com/h/32506/subscriptions/new?first_name=#{current_user[:first_name]}&last_name=#{current_user[:last_name]}&email=#{current_user[:email]}&reference=#{current_user[:id]}", :target => '_blank', :style => 'padding: 0.5em 6px;'}
+          %a{:href => "https://#{Chargify.subdomain}.chargify.com/h/#{$TAXATION[current_user.province.to_sym][:product_id]}/subscriptions/new?first_name=#{current_user[:first_name]}&last_name=#{current_user[:last_name]}&email=#{current_user[:email]}&reference=#{current_user[:id]}", :target => '_blank', :style => 'padding: 0.5em 6px;'}
             %span= "2. Ready? Subscribe now"
-      
 
       - unless current_user
       

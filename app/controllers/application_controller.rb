@@ -37,12 +37,21 @@ protected
 
   def authenticate_admin!
     unless admin_signed_in?
-      flash[:notice] = "You are not an admin..."
-      redirect_to root_url and return false
+      store_location
+      flash[:notice] = "If you're an administrator please login first."
+      redirect_to new_user_session_url and return false
     end
   end
 
 private
+
+  def after_sign_in_path_for(resource)
+    if admin_signed_in?
+      session[:return_to] || '/admin'
+    else
+      super
+    end
+  end
 
   def require_user
     unless current_user
@@ -79,7 +88,7 @@ private
   end
 
   def store_location
-    puts "Store Location: #{request.fullpath}"
+    Rails.logger.error "Store Location: #{request.fullpath}"
     session[:return_to] = request.fullpath
   end
 

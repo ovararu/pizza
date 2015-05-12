@@ -19,6 +19,7 @@ class CreateCdr < ActiveRecord::Migration
       t.string   :userfield,   :limit => 255, :null => false, :default => ''
       t.boolean  :billed,      :null => false, :default => false
     end
+
     # cdr table:
     #
     # ActiveRecord::Base.connection.execute("

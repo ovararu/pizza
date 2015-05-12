@@ -10,10 +10,10 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 6) do
+ActiveRecord::Schema.define(:version => 7) do
 
   create_table "cdr", :force => true do |t|
-    t.datetime "calldate",                  :default => '2011-03-01 04:33:47', :null => false
+    t.datetime "calldate",                  :default => '2011-07-07 21:38:08', :null => false
     t.string   "clid",        :limit => 80, :default => "",                    :null => false
     t.string   "src",         :limit => 80, :default => "",                    :null => false
     t.string   "dst",         :limit => 80, :default => "",                    :null => false
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(:version => 6) do
     t.integer  "accountcode", :limit => 8,                                     :null => false
     t.string   "uniqueid",    :limit => 32, :default => "",                    :null => false
     t.string   "userfield",                 :default => "",                    :null => false
+    t.boolean  "billed",                    :default => false,                 :null => false
   end
 
   create_table "delayed_jobs", :force => true do |t|
@@ -107,8 +108,14 @@ ActiveRecord::Schema.define(:version => 6) do
     t.integer  "customer_id"
     t.integer  "subscription_id"
     t.string   "dst"
+    t.string   "province",                                              :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "business_name"
+    t.string   "business_address"
+    t.string   "business_city"
+    t.string   "business_province"
+    t.string   "business_postal_code"
   end
 
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true

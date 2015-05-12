@@ -7,7 +7,7 @@ class SubscriptionsController < InheritedResources::Base
     unless @user.nil?
       @user.subscription_id = params[:subscription_id]
       @user.save
-      redirect_to territories_path, :flash => {:notice => "Great you're all setup, you'll start recieving calls at anytime"}
+      redirect_to territories_path, :flash => {:notice => "Success! You're subscribed, you'll start receiving calls at anytime"}
     else
       flash[:error] = "Sorry, we couldn't find your account, please contact us for assistance"
       redirect_to '/'

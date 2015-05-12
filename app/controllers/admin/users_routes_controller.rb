@@ -1,4 +1,4 @@
-class Admin::RoutesController < ApplicationController
+class Admin::UsersRoutesController < ApplicationController
   before_filter :authenticate_admin!
   
   layout 'admin'
@@ -41,13 +41,8 @@ class Admin::RoutesController < ApplicationController
       :updated_at,
     ]
 
+    config.columns[:territory].clear_link
+
   end
-
-#  def self.active_scaffold_controller_for(klass)
-#    return Admin::RoutesController if klass == Route
-#    return Admin::RoutesTerritoryController if klass == Territory
-#    return Admin::RoutesUsersController if klass == User
-#    return "#{klass}ScaffoldController".constantize rescue super
-#  end
-
+  
 end
