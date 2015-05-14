@@ -229,6 +229,7 @@ DEPENDENCIES
   recordselect_vho!
   render_component_vho!
   ruby_parser
+  sqlite3
   taps
   tiny_mce
   unicorn
