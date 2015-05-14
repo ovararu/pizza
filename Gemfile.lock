@@ -85,6 +85,12 @@ GEM
     bcrypt-ruby (2.1.4)
     builder (2.1.2)
     cancan (1.5.1)
+    capistrano (2.11.2)
+      highline
+      net-scp (>= 1.0.0)
+      net-sftp (>= 2.0.0)
+      net-ssh (>= 2.0.14)
+      net-ssh-gateway (>= 1.1.0)
     chargify_api_ares (0.3.8)
     configuration (1.2.0)
     daemons (1.1.0)
@@ -106,6 +112,7 @@ GEM
       json (~> 1.5.1)
       launchy (~> 0.3.2)
       rest-client (>= 1.4.0, < 1.7.0)
+    highline (1.6.11)
     hoptoad_notifier (2.4.6)
       activesupport
       builder
@@ -115,6 +122,7 @@ GEM
       has_scope (~> 0.5.0)
       responders (~> 0.6.0)
     json (1.5.1)
+    kgio (2.7.3)
     launchy (0.3.7)
       configuration (>= 0.0.5)
       rake (>= 0.8.1)
@@ -126,6 +134,13 @@ GEM
     mechanize (1.0.0)
       nokogiri (>= 1.2.1)
     mime-types (1.16)
+    net-scp (1.0.4)
+      net-ssh (>= 1.99.1)
+    net-sftp (2.0.5)
+      net-ssh (>= 2.0.9)
+    net-ssh (2.3.0)
+    net-ssh-gateway (1.1.0)
+      net-ssh (>= 1.99.1)
     newrelic_rpm (2.13.4)
     nokogiri (1.4.4)
     pg (0.10.1)
@@ -148,6 +163,7 @@ GEM
       activesupport (= 3.0.5)
       rake (>= 0.8.7)
       thor (~> 0.14.4)
+    raindrops (0.8.0)
     rake (0.8.7)
     responders (0.6.2)
     rest-client (1.6.1)
@@ -173,6 +189,10 @@ GEM
     treetop (1.4.9)
       polyglot (>= 0.3.1)
     tzinfo (0.3.24)
+    unicorn (4.2.0)
+      kgio (~> 2.6)
+      rack
+      raindrops (~> 0.7)
     verification (1.0.1)
       actionpack (~> 3.0.0)
       activesupport (~> 3.0.0)
@@ -191,6 +211,7 @@ DEPENDENCIES
   active_scaffold_vho!
   activerecord-import
   cancan
+  capistrano
   chargify_api_ares
   delayed_job
   devise
@@ -208,8 +229,8 @@ DEPENDENCIES
   recordselect_vho!
   render_component_vho!
   ruby_parser
-  sqlite3
   taps
   tiny_mce
+  unicorn
   will_paginate
   wirble
