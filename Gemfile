@@ -6,8 +6,8 @@ gem 'rails'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 # db
-gem 'sqlite3'
-gem "pg"
+# gem 'sqlite3'
+gem 'pg'
 
 # core
 gem 'chargify_api_ares' # f**k you so much
