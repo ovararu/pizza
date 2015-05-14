@@ -6,7 +6,7 @@ gem 'rails'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 # db
-gem 'sqlite3'
+gem 'sqlite3', '1.3.3'
 gem 'pg'
 
 # core
