@@ -8,6 +8,7 @@
 
 require 'csv'
 
+Users.destroy_all
 # 
 rob = User.create(:first_name => "Robert", :last_name => "Lowe", :dst => "123-123-1234", :province => "Ontario", :email => "rob@iblargz.com", :password => "nopass", :password_confirmation => "nopass")
 rob.add_role "admin"
@@ -24,8 +25,8 @@ simon.save!
 
 
 # 810k postal codes
-puts "Executing `psql pizzadb_development -f #{RAILS_ROOT}/db/seeds/postal_codes.psql`, please wait about 10 seconds."
-`psql -h localhost pizzadb_development -f #{RAILS_ROOT}/db/seeds/postal_codes.psql`
+puts "Executing `psql --username=postgres pizza_production -f #{RAILS_ROOT}/db/seeds/postal_codes.psql`, please wait about 10 seconds."
+`psql -h localhost --username=postgres pizza_production -f #{RAILS_ROOT}/db/seeds/postal_codes.psql`
 
 
 
