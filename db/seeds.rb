@@ -24,8 +24,8 @@ simon.save!
 
 
 # 810k postal codes
-puts "Executing `psql -U=pizza -d pizza_production -f #{RAILS_ROOT}/db/seeds/postal_codes.psql`, please wait about 10 seconds."
-`psql -h localhost -U=pizza -d pizza_production -f #{RAILS_ROOT}/db/seeds/postal_codes.psql`
+puts "Executing `psql -U pizza -d pizza_production -f #{RAILS_ROOT}/db/seeds/postal_codes.psql`, please wait about 10 seconds."
+`psql -h localhost -U pizza -d pizza_production -f #{RAILS_ROOT}/db/seeds/postal_codes.psql`
 
 
 
