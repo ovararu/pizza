@@ -1,6 +1,7 @@
 require "bundler/capistrano"
 
-server "192.168.1.10", :web, :app, :db, primary: true
+#server "192.168.1.10", :web, :app, :db, primary: true
+server "74.122.132.241", :web, :app, :db, primary: true
 
 set :application, "pizza"
 set :user, "deployer"
