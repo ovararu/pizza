@@ -4,7 +4,7 @@ require "bundler/capistrano"
 server "74.122.132.241", :web, :app, :db, primary: true
 
 set :application, "pizza"
-set :user, "eoldrnofou"
+set :user, "deployer"
 set :deploy_to, "/home/#{user}/apps/#{application}"
 set :deploy_via, :remote_cache
 set :use_sudo, false
